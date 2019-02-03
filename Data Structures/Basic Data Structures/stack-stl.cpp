@@ -16,7 +16,6 @@ int main()
 	printf("size of the stack : %d\n",mystack.size());
 	
 	// Printing the content of the stack and there respective index values
-	
 	while(mystack.empty() == false)
 	{
 		printf("%d \n",mystack.top());
