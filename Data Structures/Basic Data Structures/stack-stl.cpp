@@ -12,13 +12,16 @@ int main()
 	mystack.push(1);
 	mystack.push(2);
 	
+	// Print the total number of elements in the stack
+	printf("size of the stack : %d\n",mystack.size());
+	
 	// Printing the content of the stack and there respective index values
 	
 	while(mystack.empty() == false)
 	{
 		printf("%d \n",mystack.top());
-    mystack.pop();
-		}	
+    	mystack.pop();
+	}	
 	
 	return 0;
 }
