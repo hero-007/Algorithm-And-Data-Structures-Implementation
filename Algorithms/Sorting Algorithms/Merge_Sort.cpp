@@ -1,6 +1,49 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void merge_2(int *arr,int st,int ed)
+{
+	int leng = ed-st+1;
+	int mid = (st+ed)/2;
+	
+	int *temp = new int[leng];
+	
+	int i=st,j=mid+1,itr=0;
+	while(i <= mid && j <= ed)
+	{
+		if(arr[i] <= arr[j])
+		{
+			temp[itr] = arr[i];
+			i++;
+		}
+		else
+		{
+			temp[itr] = arr[j];
+			j++;
+		}
+		itr++;
+	}
+	
+	while(i <= mid){
+		temp[itr]=arr[i];
+		itr++;
+		i++;
+	}
+	while(j <= ed){
+		temp[itr]=arr[j];
+		itr++;
+		j++;
+	}
+	int mtr = 0;
+	for(int k = st;k<=ed;k++)
+	{
+		arr[k] = temp[mtr];
+		mtr++;
+	}
+	
+	delete []temp;
+}
+
 void merge(int *arr, int start_index, int mid_index, int end_index)
 {
 	int left_size = mid_index-start_index+1;
@@ -62,7 +105,7 @@ void merge_sort(int *arr, int start_index, int end_index)
 		
 		merge_sort(arr,start_index,mid_index);
 		merge_sort(arr,mid_index+1,end_index);
-		merge(arr,start_index,mid_index,end_index);
+		merge_2(arr,start_index,end_index);
 	}
 }
 
@@ -81,7 +124,7 @@ int main()
 	merge_sort(arr,0,n-1);
 	
 	cout<<"\nSorted array : ";
-	for(int i=0;i<8;i++)
+	for(int i=0;i<n;i++)
 		cout<<arr[i]<<" ";
 	
 	return 0;
