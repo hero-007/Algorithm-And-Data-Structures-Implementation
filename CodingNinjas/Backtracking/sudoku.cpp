@@ -89,6 +89,7 @@ bool sudoku(int board[9][9])
 	}
 }
 
+
 int main()
 {
 	int board[9][9];
