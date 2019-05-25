@@ -2,10 +2,16 @@
 using namespace std;
 
 #define mod 1000000007
+#define siz 1000001
 
-int factorial(int n)
+void fill_fac(int *fac)
 {
-	return (n == 0 || n == 1)?1:(n*factorial(n-1));
+	for(int i=2;i<siz;i++)
+    {
+        long temp = (long)fac[i-1] * i;
+        int res = (int)(temp%mod);
+        fac[i] = res;
+    }
 }
 
 bool isValid(int x1,int y1,int x2,int y2)
@@ -29,7 +35,7 @@ bool isValid(int x1,int y1,int x2,int y2)
     return false;
 }
 
-void singleConnectedComponent(vector<vector<int> >adj_list,vector<int> &temp,bool *visited,int start)
+void singleConnectedComponent(vector<int> *adj_list,vector<int> &temp,bool *visited,int start)
 {
     visited[start] = true;
     temp.push_back(start);
@@ -45,7 +51,7 @@ void singleConnectedComponent(vector<vector<int> >adj_list,vector<int> &temp,boo
     }
 }
 
-vector<vector<int> > getConnected(vector<vector<int> >adj_list,int q)
+vector<vector<int> > getConnected(vector<int> *adj_list,int q)
 {
     bool *visited = new bool[q];
     for(int i=0;i<q;i++)
@@ -74,6 +80,11 @@ int main()
 	int t;
     cin>>t;
     
+    int * fac = new int[siz];
+    fac[0] = 1;
+    fac[1] = 1;
+    fill_fac(fac);
+        
     while(t--)
     {
         int n,m,q;    // n - rows, m - columns, q - number of horses
@@ -89,21 +100,21 @@ int main()
         }
         
         // using the above vector generate a adj_list
-        vector<vector<int> >adj_list(q);
+        vector<int> *adj_list = new vector<int>[q];
         for(int i=0;i<q;i++)
         {
             pair<int,int> temp = horses[i];
             
-            for(int j=0;j<q;j++)
+            for(int j=i+1;j<q;j++)
             {
-                if(i == j)
-                    continue;
+                
                 pair<int,int> temp2 = horses[j];
                 bool status = isValid(temp.first,temp.second,temp2.first,temp2.second);
                 
                 if(status)
                 {
                     adj_list[i].push_back(j);
+                    adj_list[j].push_back(i);
                 }
             }
         }
@@ -117,7 +128,7 @@ int main()
         for(int kt=0;kt<st;kt++)
         {
             int temp = output[kt].size();
-            int res = factorial(temp);
+            int res = fac[temp];
             
             long temp_ = (long)result * res;
             result = (int)(temp_%mod);
