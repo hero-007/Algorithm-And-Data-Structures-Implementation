@@ -16,7 +16,7 @@ vector<int> *primeFactor()
 	}
 	
 	// for all odd numbers
-	for(int k=3;k<max;k++)
+	for(int k=3;k<max;k+=2)
 	{
 		if(primes->at(k) == 0)
 		{

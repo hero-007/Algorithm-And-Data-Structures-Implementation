@@ -52,18 +52,6 @@ int main()
 	}
 	
 	
-	findChange(n,coins,lastCoin);
-	
-	// Print Count and lastCoin
-	cout<<"Count : ";
-	for(int i=0;i<=n;i++)
-		cout<<count[i]<<" ";
-	cout<<endl;
-	
-	cout<<"Last Coin : ";
-	for(int j=0;j<=n;j++)
-		cout<<lastCoin[j]<<" ";
-	cout<<endl;
 
 return 0;
 }
