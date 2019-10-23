@@ -151,30 +151,9 @@ public:
  * obj->put(key,value);
  */
  
- 
  int main()
  {
-    //  LRUCache* cache = new LRUCache(2);
- 	
-//  	cache->put(1,1);
-//  	cache->put(2,2);
-//  	cout<<cache->get(1)<<endl;
-//  	unordered_map<int,Node*> :: iterator it = cache->cache.begin();
-//  	while(it != cache->cache.end())
-//  	{
-//  	    cout<<it->first<<" "<<it->second<<endl;
-//  	    it++;
-//  	}
-
-//     Node *temp = cache->head;
-//     while(temp!=NULL)
-//     {
-//         cout<<temp->val;
-//         cout<<endl;
-//         temp = temp->next;
-//     }
- 	
-//  	cout<<cache->head->val<<endl;
+    
    LRUCache* cache = new LRUCache(2);
  	
  	cache->put(1,1);
@@ -190,12 +169,3 @@ public:
  	return 0;
  }
  
- /**
- LRUCache* cache = new LRUCache(1);
- 	
- 	cache->put(2,1);
- 	cout<<cache->get(2)<<endl;
- 	cache->put(3,2);
- 	cout<<cache->get(2)<<endl;
- 	cout<<cache->get(3)<<endl;
- **/
